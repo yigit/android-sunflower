@@ -17,14 +17,14 @@
 <resources>
 
     <!-- To see how these attributes are used, please visit https://material.io/develop/android/theming/color/ -->
-    <style name="Base.Theme.Sunflower" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorOnPrimary">@color/colorOnPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorSurface">@color/colorSurface</item>
-        <item name="colorSecondary">@color/colorSecondary</item>
-        <item name="android:colorBackground">@color/colorBackground</item>
+    <style name="Base.Theme.Sunflower" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/sunflower_light_green</item>
+        <item name="colorOnPrimary">@color/sunflower_yellow</item>
+        <item name="colorPrimaryDark">@color/sunflower_dark_green</item>
+        <item name="colorAccent">@color/sunflower_dark_green</item>
+        <item name="colorSurface">@color/card_off_white</item>
+        <item name="colorSecondary">@color/sunflower_yellow</item>
+        <item name="android:colorBackground">@color/sunflower_light_green</item>
     </style>
 
     <style name="Theme.Sunflower" parent="Base.Theme.Sunflower"/>
