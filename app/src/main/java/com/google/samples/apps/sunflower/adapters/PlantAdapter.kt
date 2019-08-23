@@ -36,7 +36,7 @@ class PlantAdapter : ListAdapter<Plant, PlantAdapter.ViewHolder>(PlantDiffCallba
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val plant = getItem(position)
         holder.apply {
-            bind(createOnClickListener(plant.plantId), plant)
+            bind(plant)
             itemView.tag = plant
         }
     }
@@ -46,20 +46,28 @@ class PlantAdapter : ListAdapter<Plant, PlantAdapter.ViewHolder>(PlantDiffCallba
                 LayoutInflater.from(parent.context), parent, false))
     }
 
-    private fun createOnClickListener(plantId: String): View.OnClickListener {
-        return View.OnClickListener {
-            val direction = PlantListFragmentDirections.actionPlantListFragmentToPlantDetailFragment(plantId)
-            it.findNavController().navigate(direction)
-        }
-    }
-
     class ViewHolder(
         private val binding: ListItemPlantBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.setClickListener {
+                binding.plant?.let { plant ->
+                    navigateToPlant(plant, it)
+                }
+            }
+        }
 
-        fun bind(listener: View.OnClickListener, item: Plant) {
+        private fun navigateToPlant(
+            plant: Plant,
+            it: View
+        ) {
+            val direction =
+                PlantListFragmentDirections.actionPlantListFragmentToPlantDetailFragment(plant.plantId)
+            it.findNavController().navigate(direction)
+        }
+
+        fun bind(item: Plant) {
             binding.apply {
-                clickListener = listener
                 plant = item
                 executePendingBindings()
             }
